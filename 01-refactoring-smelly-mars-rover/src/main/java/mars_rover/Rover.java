@@ -10,6 +10,7 @@ public class Rover {
     public static final String LEFT = "l";
     public static final String RIGHT = "r";
     private String direction;
+    private Direction directionType;
     private int y;
     private int x;
 
