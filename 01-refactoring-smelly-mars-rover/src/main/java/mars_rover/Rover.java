@@ -33,7 +33,7 @@ public class Rover {
                     setDirection(WEST);
                 } else if (isFacingSouth()) {
                     setDirection(EAST);
-                } else if (getDirection().equals(WEST)) {
+                } else if (isFacingWest()) {
                     setDirection(SOUTH);
                 } else {
                     setDirection(NORTH);
@@ -45,7 +45,7 @@ public class Rover {
                     setDirection(EAST);
                 } else if (isFacingSouth()) {
                     setDirection(WEST);
-                } else if (getDirection().equals(WEST)) {
+                } else if (isFacingWest()) {
                     setDirection(NORTH);
                 } else {
                     setDirection(SOUTH);
@@ -64,13 +64,17 @@ public class Rover {
                     y += displacement;
                 } else if (isFacingSouth()) {
                     y -= displacement;
-                } else if (getDirection().equals(WEST)) {
+                } else if (isFacingWest()) {
                     x -= displacement;
                 } else {
                     x += displacement;
                 }
             }
         }
+    }
+
+    private boolean isFacingWest() {
+        return directionType.equals(Direction.W);
     }
 
     private boolean isFacingSouth() {
