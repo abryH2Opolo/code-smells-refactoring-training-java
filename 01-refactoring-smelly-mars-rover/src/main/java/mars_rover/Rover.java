@@ -12,8 +12,6 @@ public class Rover {
     public static final String LEFT = "l";
     public static final String RIGHT = "r";
     private Direction direction;
-    private int y;
-    private int x;
     private Coordinates coordinates;
 
     public Rover(int x, int y, String direction) {
@@ -22,8 +20,6 @@ public class Rover {
     }
 
     public void setCoordinates(int x, int y){
-        this.x = x;
-        this.y = y;
         this.coordinates = new Coordinates(x, y);
     }
 
