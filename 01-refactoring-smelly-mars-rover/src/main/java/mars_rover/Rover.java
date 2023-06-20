@@ -1,5 +1,7 @@
 package mars_rover;
 
+import java.util.Objects;
+
 public class Rover {
 
     public static final String NORTH = "N";
@@ -15,7 +17,7 @@ public class Rover {
     private int x;
 
     public Rover(int x, int y, String direction) {
-        this.direction = direction;
+        this.setDirection(direction);
         this.y = y;
         this.x = x;
     }
@@ -27,26 +29,26 @@ public class Rover {
             if (command.equals(LEFT)) {
 
                 // Rotate Rover
-                if (direction.equals(NORTH)) {
-                    direction = WEST;
-                } else if (direction.equals(SOUTH)) {
-                    direction = EAST;
-                } else if (direction.equals(WEST)) {
-                    direction = SOUTH;
+                if (getDirection().equals(NORTH)) {
+                    setDirection(WEST);
+                } else if (getDirection().equals(SOUTH)) {
+                    setDirection(EAST);
+                } else if (getDirection().equals(WEST)) {
+                    setDirection(SOUTH);
                 } else {
-                    direction = NORTH;
+                    setDirection(NORTH);
                 }
             } else if (command.equals(RIGHT)) {
 
                 // Rotate Rover
-                if (direction.equals(NORTH)) {
-                    direction = EAST;
-                } else if (direction.equals(SOUTH)) {
-                    direction = WEST;
-                } else if (direction.equals(WEST)) {
-                    direction = NORTH;
+                if (getDirection().equals(NORTH)) {
+                    setDirection(EAST);
+                } else if (getDirection().equals(SOUTH)) {
+                    setDirection(WEST);
+                } else if (getDirection().equals(WEST)) {
+                    setDirection(NORTH);
                 } else {
-                    direction = SOUTH;
+                    setDirection(SOUTH);
                 }
             } else {
 
@@ -58,11 +60,11 @@ public class Rover {
                 }
                 int displacement = displacement1;
 
-                if (direction.equals(NORTH)) {
+                if (getDirection().equals(NORTH)) {
                     y += displacement;
-                } else if (direction.equals(SOUTH)) {
+                } else if (getDirection().equals(SOUTH)) {
                     y -= displacement;
-                } else if (direction.equals(WEST)) {
+                } else if (getDirection().equals(WEST)) {
                     x -= displacement;
                 } else {
                     x += displacement;
@@ -74,30 +76,31 @@ public class Rover {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof Rover)) return false;
         Rover rover = (Rover) o;
-
-        if (y != rover.y) return false;
-        if (x != rover.x) return false;
-        return direction != null ? direction.equals(rover.direction) : rover.direction == null;
-
+        return y == rover.y && x == rover.x && directionType == rover.directionType;
     }
 
     @Override
     public int hashCode() {
-        int result = direction != null ? direction.hashCode() : 0;
-        result = 31 * result + y;
-        result = 31 * result + x;
-        return result;
+        return Objects.hash(directionType, y, x);
     }
 
     @Override
     public String toString() {
         return "Rover{" +
-            "direction='" + direction + '\'' +
+            "directionType=" + directionType +
             ", y=" + y +
             ", x=" + x +
             '}';
+    }
+
+    private String getDirection() {
+        return direction;
+    }
+
+    private void setDirection(String direction) {
+        this.direction = direction;
+        this.directionType = Direction.create(direction);
     }
 }
