@@ -11,8 +11,7 @@ public class Rover {
     public static final String FORWARD = "f";
     public static final String LEFT = "l";
     public static final String RIGHT = "r";
-    private String direction;
-    private Direction directionType;
+    private Direction direction;
     private int y;
     private int x;
 
@@ -74,15 +73,15 @@ public class Rover {
     }
 
     private boolean isFacingWest() {
-        return directionType.equals(Direction.W);
+        return direction.equals(Direction.W);
     }
 
     private boolean isFacingSouth() {
-        return directionType.equals(Direction.S);
+        return direction.equals(Direction.S);
     }
 
     private boolean isFacingNorth() {
-        return directionType.equals(Direction.N);
+        return direction.equals(Direction.N);
     }
 
     @Override
@@ -90,29 +89,24 @@ public class Rover {
         if (this == o) return true;
         if (!(o instanceof Rover)) return false;
         Rover rover = (Rover) o;
-        return y == rover.y && x == rover.x && directionType == rover.directionType;
+        return y == rover.y && x == rover.x && direction == rover.direction;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(directionType, y, x);
+        return Objects.hash(direction, y, x);
     }
 
     @Override
     public String toString() {
         return "Rover{" +
-            "directionType=" + directionType +
+            "directionType=" + direction +
             ", y=" + y +
             ", x=" + x +
             '}';
     }
 
-    private String getDirection() {
-        return direction;
-    }
-
     private void setDirection(String direction) {
-        this.direction = direction;
-        this.directionType = Direction.create(direction);
+        this.direction = Direction.create(direction);
     }
 }
