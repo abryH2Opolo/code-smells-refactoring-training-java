@@ -14,6 +14,7 @@ public class Rover {
     private Direction direction;
     private int y;
     private int x;
+    private Coordinates coordinates;
 
     public Rover(int x, int y, String direction) {
         this.setDirection(direction);
@@ -23,6 +24,7 @@ public class Rover {
     public void setCoordinates(int x, int y){
         this.x = x;
         this.y = y;
+        this.coordinates = new Coordinates(x, y);
     }
 
     public void receive(String commandsSequence) {
