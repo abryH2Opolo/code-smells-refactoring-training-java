@@ -2,6 +2,13 @@ package mars_rover;
 
 public class Rover {
 
+    public static final String NORTH = "N";
+    public static final String SOUTH = "S";
+    public static final String EAST = "E";
+    public static final String WEST = "W";
+    public static final String FORWARD = "f";
+    public static final String LEFT = "l";
+    public static final String RIGHT = "r";
     private String direction;
     private int y;
     private int x;
@@ -16,45 +23,45 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (command.equals("l")) {
+            if (command.equals(LEFT)) {
 
                 // Rotate Rover
-                if (direction.equals("N")) {
-                    direction = "W";
-                } else if (direction.equals("S")) {
-                    direction = "E";
-                } else if (direction.equals("W")) {
-                    direction = "S";
+                if (direction.equals(NORTH)) {
+                    direction = WEST;
+                } else if (direction.equals(SOUTH)) {
+                    direction = EAST;
+                } else if (direction.equals(WEST)) {
+                    direction = SOUTH;
                 } else {
-                    direction = "N";
+                    direction = NORTH;
                 }
-            } else if (command.equals("r")) {
+            } else if (command.equals(RIGHT)) {
 
                 // Rotate Rover
-                if (direction.equals("N")) {
-                    direction = "E";
-                } else if (direction.equals("S")) {
-                    direction = "W";
-                } else if (direction.equals("W")) {
-                    direction = "N";
+                if (direction.equals(NORTH)) {
+                    direction = EAST;
+                } else if (direction.equals(SOUTH)) {
+                    direction = WEST;
+                } else if (direction.equals(WEST)) {
+                    direction = NORTH;
                 } else {
-                    direction = "S";
+                    direction = SOUTH;
                 }
             } else {
 
                 // Displace Rover
                 int displacement1 = -1;
 
-                if (command.equals("f")) {
+                if (command.equals(FORWARD)) {
                     displacement1 = 1;
                 }
                 int displacement = displacement1;
 
-                if (direction.equals("N")) {
+                if (direction.equals(NORTH)) {
                     y += displacement;
-                } else if (direction.equals("S")) {
+                } else if (direction.equals(SOUTH)) {
                     y -= displacement;
-                } else if (direction.equals("W")) {
+                } else if (direction.equals(WEST)) {
                     x -= displacement;
                 } else {
                     x += displacement;
