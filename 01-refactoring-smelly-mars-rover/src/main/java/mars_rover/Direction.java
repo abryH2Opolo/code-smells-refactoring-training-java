@@ -12,6 +12,11 @@ public enum Direction {
         public Direction moveRight() {
             return Direction.create("E");
         }
+
+        @Override
+        public Coordinates move(Coordinates coordinates, int displacement) {
+            return coordinates.moveAlongYAxis(displacement);
+        }
     }, S {
         @Override
         public Direction moveLeft() {
@@ -21,6 +26,11 @@ public enum Direction {
         @Override
         public Direction moveRight() {
             return Direction.create("W");
+        }
+
+        @Override
+        public Coordinates move(Coordinates coordinates, int displacement) {
+            return coordinates.moveAlongYAxis(-displacement);
         }
     }, E {
         @Override
@@ -32,6 +42,11 @@ public enum Direction {
         public Direction moveRight() {
             return Direction.create("S");
         }
+
+        @Override
+        public Coordinates move(Coordinates coordinates, int displacement) {
+            return coordinates.moveAlongXAxis(displacement);
+        }
     }, W {
         @Override
         public Direction moveLeft() {
@@ -41,6 +56,11 @@ public enum Direction {
         @Override
         public Direction moveRight() {
             return Direction.create("N");
+        }
+
+        @Override
+        public Coordinates move(Coordinates coordinates, int displacement) {
+            return coordinates.moveAlongXAxis(-displacement);
         }
     };
 
@@ -53,4 +73,5 @@ public enum Direction {
 
     public abstract Direction moveLeft();
     public abstract Direction moveRight();
+    public abstract Coordinates move(Coordinates coordinates, int displacement);
 }

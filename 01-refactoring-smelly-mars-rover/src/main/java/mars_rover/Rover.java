@@ -21,15 +21,9 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (command.equals("l")) {
-
-                // Rotate Rover
                 this.direction = direction.moveLeft();
-
             } else if (command.equals("r")) {
-
-                // Rotate Rover
                 this.direction = direction.moveRight();
-
             } else {
 
                 // Displace Rover
@@ -40,29 +34,10 @@ public class Rover {
                 }
                 int displacement = displacement1;
 
-                if (isFacingNorth()) {
-                    this.coordinates = coordinates.moveAlongYAxis(displacement);
-                } else if (isFacingSouth()) {
-                    this.coordinates = coordinates.moveAlongYAxis(-displacement);
-                } else if (isFacingWest()) {
-                    this.coordinates = coordinates.moveAlongXAxis(-displacement);
-                } else {
-                    this.coordinates = coordinates.moveAlongXAxis(displacement);
-                }
+                this.coordinates = direction.move(coordinates, displacement);
+
             }
         }
-    }
-
-    private boolean isFacingWest() {
-        return direction.equals(Direction.W);
-    }
-
-    private boolean isFacingSouth() {
-        return direction.equals(Direction.S);
-    }
-
-    private boolean isFacingNorth() {
-        return direction.equals(Direction.N);
     }
 
     @Override
