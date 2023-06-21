@@ -5,12 +5,12 @@ public enum Direction {
     N {
         @Override
         public Direction moveLeft() {
-            return Direction.create("W");
+            return Direction.create(WEST);
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create("E");
+            return Direction.create(EAST);
         }
 
         @Override
@@ -20,12 +20,12 @@ public enum Direction {
     }, S {
         @Override
         public Direction moveLeft() {
-            return Direction.create("E");
+            return Direction.create(EAST);
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create("W");
+            return Direction.create(WEST);
         }
 
         @Override
@@ -35,12 +35,12 @@ public enum Direction {
     }, E {
         @Override
         public Direction moveLeft() {
-            return Direction.create("N");
+            return Direction.create(NORTH);
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create("S");
+            return Direction.create(SOUTH);
         }
 
         @Override
@@ -50,12 +50,12 @@ public enum Direction {
     }, W {
         @Override
         public Direction moveLeft() {
-            return Direction.create("S");
+            return Direction.create(SOUTH);
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create("N");
+            return Direction.create(NORTH);
         }
 
         @Override
@@ -64,10 +64,15 @@ public enum Direction {
         }
     };
 
+    private static final String SOUTH = "S";
+    private static final String NORTH = "N";
+    private static final String EAST = "E";
+    private static final String WEST = "W";
+
     public static Direction create(String direction) {
-        if("N".equals(direction)) return N;
-        if("S".equals(direction)) return S;
-        if("E".equals(direction)) return E;
+        if(NORTH.equals(direction)) return N;
+        if(SOUTH.equals(direction)) return S;
+        if(EAST.equals(direction)) return E;
         return W;
     }
 
