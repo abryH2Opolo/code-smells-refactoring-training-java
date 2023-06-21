@@ -8,7 +8,7 @@ public class Rover {
     private Coordinates coordinates;
 
     public Rover(int x, int y, String direction) {
-        this.setDirection(direction);
+        this.direction = Direction.create(direction);
         setCoordinates(x, y);
     }
 
@@ -28,15 +28,8 @@ public class Rover {
             } else if (command.equals("r")) {
 
                 // Rotate Rover
-                if (isFacingNorth()) {
-                    setDirection("E");
-                } else if (isFacingSouth()) {
-                    setDirection("W");
-                } else if (isFacingWest()) {
-                    setDirection("N");
-                } else {
-                    setDirection("S");
-                }
+                this.direction = direction.moveRight();
+
             } else {
 
                 // Displace Rover
