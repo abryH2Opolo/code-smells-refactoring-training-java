@@ -40,4 +40,8 @@ public class Coordinates {
     public int getY() {
         return y;
     }
+
+    Coordinates moveAlongYAxis(int displacement) {
+        return new Coordinates(getX(), getY() + displacement);
+    }
 }
