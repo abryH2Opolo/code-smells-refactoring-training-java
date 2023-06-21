@@ -33,15 +33,11 @@ public class Coordinates {
             '}';
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     Coordinates moveAlongYAxis(int displacement) {
-        return new Coordinates(getX(), getY() + displacement);
+        return new Coordinates(x, y + displacement);
+    }
+
+    Coordinates moveAlongXAxis(int displacement) {
+        return new Coordinates(x + displacement, y);
     }
 }
