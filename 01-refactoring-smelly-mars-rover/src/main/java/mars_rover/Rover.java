@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Rover {
 
+    public static final int DISPLACEMENT_FORWARD = 1;
+    public static final int DISPLACEMENT_BACKWARDS = -1;
     private Direction direction;
     private Coordinates coordinates;
 
@@ -25,12 +27,9 @@ public class Rover {
             } else if (command.equals("r")) {
                 this.direction = direction.moveRight();
             } else if (command.equals("f")) {
-                int displacement = 1;
-                this.coordinates = direction.move(coordinates, displacement);
+                this.coordinates = direction.move(coordinates, DISPLACEMENT_FORWARD);
             } else {
-                int displacement = -1;
-                this.coordinates = direction.move(coordinates, displacement);
-
+                this.coordinates = direction.move(coordinates, DISPLACEMENT_BACKWARDS);
             }
         }
     }
