@@ -24,16 +24,11 @@ public class Rover {
                 this.direction = direction.moveLeft();
             } else if (command.equals("r")) {
                 this.direction = direction.moveRight();
+            } else if (command.equals("f")) {
+                int displacement = 1;
+                this.coordinates = direction.move(coordinates, displacement);
             } else {
-
-                // Displace Rover
-                int displacement1 = -1;
-
-                if (command.equals("f")) {
-                    displacement1 = 1;
-                }
-                int displacement = displacement1;
-
+                int displacement = -1;
                 this.coordinates = direction.move(coordinates, displacement);
 
             }
