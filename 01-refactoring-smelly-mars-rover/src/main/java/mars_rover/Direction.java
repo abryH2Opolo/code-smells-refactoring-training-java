@@ -5,12 +5,12 @@ public enum Direction {
     N {
         @Override
         public Direction moveLeft() {
-            return Direction.create(WEST);
+            return W;
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create(EAST);
+            return E;
         }
 
         @Override
@@ -20,12 +20,12 @@ public enum Direction {
     }, S {
         @Override
         public Direction moveLeft() {
-            return Direction.create(EAST);
+            return E;
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create(WEST);
+            return W;
         }
 
         @Override
@@ -35,12 +35,12 @@ public enum Direction {
     }, E {
         @Override
         public Direction moveLeft() {
-            return Direction.create(NORTH);
+            return N;
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create(SOUTH);
+            return S;
         }
 
         @Override
@@ -50,12 +50,12 @@ public enum Direction {
     }, W {
         @Override
         public Direction moveLeft() {
-            return Direction.create(SOUTH);
+            return S;
         }
 
         @Override
         public Direction moveRight() {
-            return Direction.create(NORTH);
+            return N;
         }
 
         @Override
@@ -64,15 +64,14 @@ public enum Direction {
         }
     };
 
-    private static final String SOUTH = "S";
-    private static final String NORTH = "N";
-    private static final String EAST = "E";
-    private static final String WEST = "W";
+    private static final String SOUTH_ENCODING = "S";
+    private static final String NORTH_ENCODING = "N";
+    private static final String EAST_ENCODING = "E";
 
     public static Direction create(String direction) {
-        if(NORTH.equals(direction)) return N;
-        if(SOUTH.equals(direction)) return S;
-        if(EAST.equals(direction)) return E;
+        if(NORTH_ENCODING.equals(direction)) return N;
+        if(SOUTH_ENCODING.equals(direction)) return S;
+        if(EAST_ENCODING.equals(direction)) return E;
         return W;
     }
 

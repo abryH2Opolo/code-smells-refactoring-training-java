@@ -1,11 +1,14 @@
 package mars_rover;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Rover {
 
-    public static final int DISPLACEMENT_FORWARD = 1;
-    public static final int DISPLACEMENT_BACKWARDS = -1;
+    private static final int DEFAULT_DISPLACEMENT = 1;
+    private static final int DISPLACEMENT_FORWARD = DEFAULT_DISPLACEMENT;
+    private static final int DISPLACEMENT_BACKWARDS = -DEFAULT_DISPLACEMENT;
     private Direction direction;
     private Coordinates coordinates;
 
@@ -19,18 +22,31 @@ public class Rover {
     }
 
     public void receive(String commandsSequence) {
+        execute(extractCommands(commandsSequence));
+    }
+
+    private void execute(List<String> commands) {
+        commands.forEach(this::execute);
+    }
+
+    private static List<String> extractCommands(String commandsSequence) {
+        List<String> commands = new ArrayList<>();
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
+            commands.add(command);
+        }
+        return commands;
+    }
 
-            if (command.equals("l")) {
-                this.direction = direction.moveLeft();
-            } else if (command.equals("r")) {
-                this.direction = direction.moveRight();
-            } else if (command.equals("f")) {
-                this.coordinates = direction.move(coordinates, DISPLACEMENT_FORWARD);
-            } else {
-                this.coordinates = direction.move(coordinates, DISPLACEMENT_BACKWARDS);
-            }
+    private void execute(String command) {
+        if (command.equals("l")) {
+            this.direction = direction.moveLeft();
+        } else if (command.equals("r")) {
+            this.direction = direction.moveRight();
+        } else if (command.equals("f")) {
+            this.coordinates = direction.move(coordinates, DISPLACEMENT_FORWARD);
+        } else {
+            this.coordinates = direction.move(coordinates, DISPLACEMENT_BACKWARDS);
         }
     }
 
