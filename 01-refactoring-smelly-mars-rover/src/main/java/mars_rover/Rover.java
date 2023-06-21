@@ -4,13 +4,6 @@ import java.util.Objects;
 
 public class Rover {
 
-    public static final String NORTH = "N";
-    public static final String SOUTH = "S";
-    public static final String EAST = "E";
-    public static final String WEST = "W";
-    public static final String FORWARD = "f";
-    public static final String LEFT = "l";
-    public static final String RIGHT = "r";
     private Direction direction;
     private Coordinates coordinates;
 
@@ -19,7 +12,7 @@ public class Rover {
         setCoordinates(x, y);
     }
 
-    public void setCoordinates(int x, int y){
+    public void setCoordinates(int x, int y) {
         this.coordinates = new Coordinates(x, y);
     }
 
@@ -27,36 +20,29 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (command.equals(LEFT)) {
+            if (command.equals("l")) {
+
+                // Rotate Rover
+                this.direction = direction.moveLeft();
+
+            } else if (command.equals("r")) {
 
                 // Rotate Rover
                 if (isFacingNorth()) {
-                    setDirection(WEST);
+                    setDirection("E");
                 } else if (isFacingSouth()) {
-                    setDirection(EAST);
+                    setDirection("W");
                 } else if (isFacingWest()) {
-                    setDirection(SOUTH);
+                    setDirection("N");
                 } else {
-                    setDirection(NORTH);
-                }
-            } else if (command.equals(RIGHT)) {
-
-                // Rotate Rover
-                if (isFacingNorth()) {
-                    setDirection(EAST);
-                } else if (isFacingSouth()) {
-                    setDirection(WEST);
-                } else if (isFacingWest()) {
-                    setDirection(NORTH);
-                } else {
-                    setDirection(SOUTH);
+                    setDirection("S");
                 }
             } else {
 
                 // Displace Rover
                 int displacement1 = -1;
 
-                if (command.equals(FORWARD)) {
+                if (command.equals("f")) {
                     displacement1 = 1;
                 }
                 int displacement = displacement1;

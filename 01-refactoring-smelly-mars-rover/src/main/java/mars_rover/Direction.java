@@ -2,7 +2,27 @@ package mars_rover;
 
 
 public enum Direction {
-    N, S, E, W;
+    N {
+        @Override
+        public Direction moveLeft() {
+            return Direction.create("W");
+        }
+    }, S {
+        @Override
+        public Direction moveLeft() {
+            return Direction.create("E");
+        }
+    }, E {
+        @Override
+        public Direction moveLeft() {
+            return Direction.create("N");
+        }
+    }, W {
+        @Override
+        public Direction moveLeft() {
+            return Direction.create("S");
+        }
+    };
 
     public static Direction create(String direction) {
         if("N".equals(direction)) return N;
@@ -10,4 +30,6 @@ public enum Direction {
         if("E".equals(direction)) return E;
         return W;
     }
+
+    public abstract Direction moveLeft();
 }
