@@ -13,16 +13,40 @@ public class Movie {
         this.priceCode = priceCode;
     }
 
-    public int getPriceCode() {
-        return priceCode;
-    }
-
-    public void setPriceCode(int code) {
-        priceCode = code;
-    }
-
     public String getTitle() {
         return title;
     }
 
+    double determineAmount(int daysRented) {
+        double movieAmount = 0;
+        switch (priceCode) {
+            case REGULAR:
+                movieAmount = 2;
+                if (daysRented > 2) {
+                    movieAmount += (daysRented - 2) * 1.5;
+                }
+                break;
+            case NEW_RELEASE:
+                movieAmount = daysRented * 3;
+                break;
+            case CHILDRENS:
+                movieAmount = 1.5;
+                if (daysRented > 3){
+                    movieAmount += (daysRented - 3) * 1.5;
+                }
+                break;
+        }
+        return movieAmount;
+    }
+
+    int extracted(int daysRented1) {
+        int points;
+        if (priceCode == NEW_RELEASE
+            && daysRented1 > 1) {
+            points = 2;
+        }else{
+            points =1;
+        }
+        return points;
+    }
 }

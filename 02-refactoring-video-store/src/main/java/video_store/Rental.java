@@ -6,14 +6,22 @@ public class Rental {
         this.daysRented = daysRented;
     }
 
-    public int getDaysRented() {
-        return daysRented;
-    }
-
     public Movie getMovie() {
         return movie;
     }
 
     private Movie movie;
     private int daysRented;
+
+    double determineAmount() {
+        return movie.determineAmount(daysRented);
+    }
+
+    int getPoints() {
+        return movie.extracted(daysRented);
+    }
+
+    public String getMovieTitle() {
+        return movie.getTitle();
+    }
 }
